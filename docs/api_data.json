@@ -1,11 +1,11 @@
 [
   {
     "type": "post",
-    "url": "/invites/dialog/:id/accept",
-    "title": "Подтвердить приглашение в диалоги",
-    "version": "0.5.0",
-    "name": "Accept",
-    "group": "Invites-Dialog",
+    "url": "/api/books/create/",
+    "title": "Создать книгу",
+    "version": "1.0.0",
+    "name": "CreateBook",
+    "group": "Books",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -13,8 +13,8 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "id",
-            "description": "<p>ID Инвайта</p>"
+            "field": "name",
+            "description": ""
           }
         ]
       }
@@ -32,22 +32,8 @@
         ]
       }
     },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"result\":true\n}",
-          "type": "json"
-        }
-      ]
-    },
     "error": {
       "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 NOT FOUND\n{\n    \"errors\": \"Приглашение <id> не найдено\"\n}",
-          "type": "json"
-        },
         {
           "title": "Error-Auth:",
           "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
@@ -55,96 +41,9 @@
         }
       ]
     },
-    "filename": "src/api/routes/invites/index.js",
-    "groupTitle": "Invites-Dialog"
-  },
-  {
-    "type": "post",
-    "url": "/invites/dialog/:id/decline",
-    "title": "Не подтверждать приглашение в диалоги",
-    "version": "0.5.0",
-    "name": "Decline",
-    "group": "Invites-Dialog",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "id",
-            "description": "<p>ID Инвайта</p>"
-          }
-        ]
-      }
-    },
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Bearer токен.</p>"
-          }
-        ]
-      }
-    },
+    "filename": "src/api/routes/books/index.js",
+    "groupTitle": "Books",
     "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"result\":true\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 NOT FOUND\n{\n    \"errors\": \"Приглашение <id> не найдено\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Auth:",
-          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "src/api/routes/invites/index.js",
-    "groupTitle": "Invites-Dialog"
-  },
-  {
-    "type": "get",
-    "url": "/invites/dialog/",
-    "title": "Список приглашений в диалоги",
-    "version": "0.5.0",
-    "name": "GetDialogInvites",
-    "group": "Invites-Dialog",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Bearer токен.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n [\n     \"id\":1,\n     \"dialog\":1337,\n     \"message\":\"Hello there!\",\n     \"from\":1333\n ]",
-          "type": "json"
-        }
-      ],
       "fields": {
         "200": [
           {
@@ -156,24 +55,135 @@
           },
           {
             "group": "200",
-            "type": "Number",
+            "type": "String",
             "optional": false,
-            "field": "dialog",
-            "description": "<p>Диалог</p>"
+            "field": "author",
+            "description": "<p>Автор</p>"
           },
           {
             "group": "200",
             "type": "String",
             "optional": false,
-            "field": "message",
-            "description": "<p>Сообщение</p>"
+            "field": "name",
+            "description": "<p>Название</p>"
           },
           {
             "group": "200",
             "type": "Number",
             "optional": false,
-            "field": "from",
-            "description": "<p>Создатель инвайта</p>"
+            "field": "publisher",
+            "description": "<p>Издатель</p>"
+          },
+          {
+            "group": "200",
+            "type": "Year",
+            "optional": false,
+            "field": "year",
+            "description": "<p>Год</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "isbn",
+            "description": "<p>ISBN</p>"
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "buy_date",
+            "description": "<p>Дата покупки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "language",
+            "description": "<p>Язык</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Количество страниц</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Цена</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Изображение</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "cover",
+            "description": "<p>Тип обложки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Категория</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "rate",
+            "description": "<p>Рейтинг</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Отдана ли кому-то</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/books/delete/:id",
+    "title": "Удалить книгу",
+    "version": "1.0.0",
+    "name": "DeleteBook",
+    "group": "Books",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Идентификатор книги</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
           }
         ]
       }
@@ -187,8 +197,425 @@
         }
       ]
     },
-    "filename": "src/api/routes/invites/index.js",
-    "groupTitle": "Invites-Dialog"
+    "filename": "src/api/routes/books/index.js",
+    "groupTitle": "Books",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Автор</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "publisher",
+            "description": "<p>Издатель</p>"
+          },
+          {
+            "group": "200",
+            "type": "Year",
+            "optional": false,
+            "field": "year",
+            "description": "<p>Год</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "isbn",
+            "description": "<p>ISBN</p>"
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "buy_date",
+            "description": "<p>Дата покупки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "language",
+            "description": "<p>Язык</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Количество страниц</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Цена</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Изображение</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "cover",
+            "description": "<p>Тип обложки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Категория</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "rate",
+            "description": "<p>Рейтинг</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Отдана ли кому-то</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/books/list/",
+    "title": "Список книг",
+    "version": "1.0.0",
+    "name": "GetBookList",
+    "group": "Books",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/books/index.js",
+    "groupTitle": "Books",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Автор</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "publisher",
+            "description": "<p>Издатель</p>"
+          },
+          {
+            "group": "200",
+            "type": "Year",
+            "optional": false,
+            "field": "year",
+            "description": "<p>Год</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "isbn",
+            "description": "<p>ISBN</p>"
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "buy_date",
+            "description": "<p>Дата покупки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "language",
+            "description": "<p>Язык</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Количество страниц</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Цена</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Изображение</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "cover",
+            "description": "<p>Тип обложки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Категория</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "rate",
+            "description": "<p>Рейтинг</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Отдана ли кому-то</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/books/update/:id",
+    "title": "Изменить книгу",
+    "version": "1.0.0",
+    "name": "UpdateBook",
+    "group": "Books",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Идентификатор книги</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/books/index.js",
+    "groupTitle": "Books",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Автор</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "publisher",
+            "description": "<p>Издатель</p>"
+          },
+          {
+            "group": "200",
+            "type": "Year",
+            "optional": false,
+            "field": "year",
+            "description": "<p>Год</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "isbn",
+            "description": "<p>ISBN</p>"
+          },
+          {
+            "group": "200",
+            "type": "Date",
+            "optional": false,
+            "field": "buy_date",
+            "description": "<p>Дата покупки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "language",
+            "description": "<p>Язык</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "pages",
+            "description": "<p>Количество страниц</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>Цена</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Изображение</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "cover",
+            "description": "<p>Тип обложки</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "category",
+            "description": "<p>Категория</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "rate",
+            "description": "<p>Рейтинг</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Отдана ли кому-то</p>"
+          }
+        ]
+      }
+    }
   },
   {
     "type": "post",

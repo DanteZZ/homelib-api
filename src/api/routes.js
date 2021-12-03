@@ -1,5 +1,5 @@
 import rUsers from "./routes/users"
-import rInvites from "./routes/invites"
+import rBooks from "./routes/books"
 import rToken from "./routes/tokens"
 
 export default [
@@ -8,8 +8,8 @@ export default [
         controller: rUsers,
     },
     {
-        path: "/invites",
-        controller: rInvites,
+        path: "/books",
+        controller: rBooks,
     },
     {
         path: "/token",
