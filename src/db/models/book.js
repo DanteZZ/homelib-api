@@ -1,4 +1,4 @@
-import { errorMessages } from "../../configs";
+import { errorMessages, common } from "../../configs";
 import validate from "validate.js";
 import { _selectFrom, _insertInto, _updateIn, _removeById } from "../common";
 
@@ -43,7 +43,7 @@ const createBook = async (from, data) => {
         data.user = from
         const add = await _insertInto("books", data);
         const book = await _selectFrom("books", { id: add.insertId });
-        return book;
+        return book[0];
     }
 }
 
@@ -88,6 +88,7 @@ const BookModel = class {
     }
 
     remove = async () => {
+        if (this.image) { await removeImage(this.image); }
         await _removeById("books", this.id);
         return true;
     }
@@ -103,11 +104,32 @@ const BookModel = class {
             language: this.language,
             pages: this.pages,
             price: this.price,
-            image: this.image,
+            image: this.image ? common.parameters.repo_images + this.image : this.image,
             cover: this.cover,
             category: this.category,
             rate: this.rate,
             handovered: this.handovered
+        }
+    }
+
+    setImage = async (base64) => {
+        try {
+            if (this.image) { await removeImage(this.image) };
+            const name = await saveImage(base64);
+            this.image = name;
+            return true;
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    removeImage = async () => {
+        try {
+            if (this.image) { await removeImage(this.image); }
+            this.image = null;
+            return true;
+        } catch (e) {
+            throw e;
         }
     }
 

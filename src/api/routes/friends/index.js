@@ -1,18 +1,18 @@
-import BookList from "./controllers/list";
-import BookCreate from "./controllers/create";
-import BookUpdate from "./controllers/update";
-import BookRemove from "./controllers/remove";
+import FriendList from "./controllers/list";
+import FriendCreate from "./controllers/create";
+import FriendUpdate from "./controllers/update";
+import FriendRemove from "./controllers/remove";
 
 import express from 'express';
 var router = express.Router();
 
 /**
  * /---------------------------------------------------------------------------------------------------------------------/
- * @api {get} /api/books/list/ Список книг
+ * @api {get} /api/friends/list/ Список друзей
  * @apiVersion 1.0.0
- * @apiName GetBookList
- * @apiGroup Books
- * @apiUse BookResult
+ * @apiName GetFriendList
+ * @apiGroup Friends
+ * @apiUse FriendResult
  * @apiHeader {String} Authorization Bearer токен.
  * @apiErrorExample {json} Error-Auth:
  *      HTTP/1.1 403 AuthenticationFailed
@@ -20,15 +20,15 @@ var router = express.Router();
  *          "errors": "Ошибка авторизации"
  *      }
  */
-router.get('/list', BookList);
+router.get('/list', FriendList);
 
 /**
  * /---------------------------------------------------------------------------------------------------------------------/
- * @api {post} /api/books/create/ Создать книгу
+ * @api {post} /api/friends/create/ Создать друга
  * @apiVersion 1.0.0
- * @apiName CreateBook
- * @apiGroup Books
- * @apiUse BookResult
+ * @apiName CreateFriend
+ * @apiGroup Friends
+ * @apiUse FriendResult
  * @apiParam {String} name
  * @apiHeader {String} Authorization Bearer токен.
  * @apiErrorExample {json} Error-Auth:
@@ -37,16 +37,16 @@ router.get('/list', BookList);
  *          "errors": "Ошибка авторизации"
  *      }
  */
-router.post('/create', BookCreate); // Создать книгу
+router.post('/create', FriendCreate); // Создать друга
 
 /**
  * /---------------------------------------------------------------------------------------------------------------------/
- * @api {post} /api/books/update/:id Изменить книгу
+ * @api {post} /api/friends/update/:id Изменить друга
  * @apiVersion 1.0.0
- * @apiName UpdateBook
- * @apiGroup Books
- * @apiUse BookResult
- * @apiParam {Number} id Идентификатор книги
+ * @apiName UpdateFriend
+ * @apiGroup Friends
+ * @apiUse FriendResult
+ * @apiParam {Number} id Идентификатор друга
  * @apiParam {String} name
  * @apiHeader {String} Authorization Bearer токен.
  * @apiErrorExample {json} Error-Auth:
@@ -55,16 +55,16 @@ router.post('/create', BookCreate); // Создать книгу
  *          "errors": "Ошибка авторизации"
  *      }
  */
-router.post('/update/:id', BookUpdate);
+router.post('/update/:id', FriendUpdate);
 
 /**
  * /---------------------------------------------------------------------------------------------------------------------/
- * @api {delete} /api/books/delete/:id Удалить книгу
+ * @api {delete} /api/friends/delete/:id Удалить друга
  * @apiVersion 1.0.0
- * @apiName DeleteBook
- * @apiGroup Books
- * @apiUse BookResult
- * @apiParam {Number} id Идентификатор книги
+ * @apiName DeleteFriend
+ * @apiGroup Friends
+ * @apiUse FriendResult
+ * @apiParam {Number} id Идентификатор друга
  * @apiHeader {String} Authorization Bearer токен.
  * @apiErrorExample {json} Error-Auth:
  *      HTTP/1.1 403 AuthenticationFailed
@@ -72,6 +72,6 @@ router.post('/update/:id', BookUpdate);
  *          "errors": "Ошибка авторизации"
  *      }
  */
-router.delete('/delete/:id', BookRemove);
+router.delete('/delete/:id', FriendRemove);
 
 export default router;
