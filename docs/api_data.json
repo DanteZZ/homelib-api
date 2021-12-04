@@ -1381,6 +1381,434 @@
   },
   {
     "type": "post",
+    "url": "/api/handovers/create/",
+    "title": "Создать передачу",
+    "version": "1.0.0",
+    "name": "CreateHandover",
+    "group": "Handovers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/handovers/index.js",
+    "groupTitle": "Handovers",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": "<p>ID Друга</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<p>Дата передачи</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "return_date",
+            "description": "<p>Дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "fact_date",
+            "description": "<p>Фактическая дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Передана ли</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/handovers/delete/:id",
+    "title": "Удалить передачу",
+    "version": "1.0.0",
+    "name": "DeleteHandover",
+    "group": "Handovers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Идентификатор передачи</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/handovers/index.js",
+    "groupTitle": "Handovers",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": "<p>ID Друга</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<p>Дата передачи</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "return_date",
+            "description": "<p>Дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "fact_date",
+            "description": "<p>Фактическая дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Передана ли</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/handovers/list/",
+    "title": "Список передач",
+    "version": "1.0.0",
+    "name": "GetHandoverList",
+    "group": "Handovers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/handovers/index.js",
+    "groupTitle": "Handovers",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": "<p>ID Друга</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<p>Дата передачи</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "return_date",
+            "description": "<p>Дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "fact_date",
+            "description": "<p>Фактическая дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Передана ли</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/handovers/update/:id",
+    "title": "Изменить передачу",
+    "version": "1.0.0",
+    "name": "UpdateHandover",
+    "group": "Handovers",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Идентификатор передачи</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/handovers/index.js",
+    "groupTitle": "Handovers",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": "<p>ID Друга</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<p>Дата передачи</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "return_date",
+            "description": "<p>Дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "fact_date",
+            "description": "<p>Фактическая дата возврата</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "handovered",
+            "description": "<p>Передана ли</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
     "url": "/api/languages/create/",
     "title": "Создать язык",
     "version": "1.0.0",
@@ -2038,6 +2466,357 @@
   },
   {
     "type": "post",
+    "url": "/api/reviews/create/",
+    "title": "Создать заметку",
+    "version": "1.0.0",
+    "name": "CreateReview",
+    "group": "Reviews",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/reviews/index.js",
+    "groupTitle": "Reviews",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Страница</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Текст</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/reviews/delete/:id",
+    "title": "Удалить заметку",
+    "version": "1.0.0",
+    "name": "DeleteReview",
+    "group": "Reviews",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Идентификатор заметки</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/reviews/index.js",
+    "groupTitle": "Reviews",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Страница</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Текст</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/reviews/list/",
+    "title": "Список заметок",
+    "version": "1.0.0",
+    "name": "GetReviewList",
+    "group": "Reviews",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/reviews/index.js",
+    "groupTitle": "Reviews",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Страница</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Текст</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/reviews/update/:id",
+    "title": "Изменить заметку",
+    "version": "1.0.0",
+    "name": "UpdateReview",
+    "group": "Reviews",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Идентификатор заметки</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/reviews/index.js",
+    "groupTitle": "Reviews",
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "book",
+            "description": "<p>ID Книги</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Страница</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Текст</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
     "url": "/api/token/gen",
     "title": "Сгенерировать токен",
     "version": "0.5.0",
@@ -2436,100 +3215,6 @@
         {
           "title": "Error-Validation:",
           "content": "HTTP/1.1 400 BAD REQUEST\n{\n    \"errors\": \"Не удалось сохранить изображение\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "Error-Auth:",
-          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "src/api/routes/users/index.js",
-    "groupTitle": "Users-Me"
-  },
-  {
-    "type": "put",
-    "url": "/api/users/me/setgame",
-    "title": "Установить игру текущего пользователя",
-    "version": "0.5.0",
-    "name": "SetMyGame",
-    "group": "Users-Me",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Boolean",
-            "optional": false,
-            "field": "ingame",
-            "description": "<p>Находится ли в игре</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Object",
-            "optional": false,
-            "field": "game",
-            "description": "<p>Информация об игре</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "game.name",
-            "description": "<p>Название сборки</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "game.version",
-            "description": "<p>Версия сборки</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "game.build",
-            "description": "<p>ID Версии (Если она расшарена)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "game.gamecode",
-            "description": "<p>Код игры</p>"
-          }
-        ]
-      }
-    },
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Bearer токен.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"id\": 1,\n    \"username\": \"testuser\",\n    \"avatar\": \"\",\n    \"name\": \"Тестовый пользователь\",\n    \"email\": \"test@test.ru\",\n    \"ingame\": false,\n    \"ingame_info\": null\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Validation:",
-          "content": "HTTP/1.1 400 BAD REQUEST\n{\n    \"errors\": \"Не удалось установить игру\"\n}",
           "type": "json"
         },
         {

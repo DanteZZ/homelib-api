@@ -8,7 +8,6 @@ import meInfo from "./controllers/me/info";
 import meUpdate from "./controllers/me/update";
 import meChangemail from "./controllers/me/changemail";
 import meChangepass from "./controllers/me/changepass";
-import meSetGame from "./controllers/me/setgame";
 import meSetAvatar from "./controllers/me/setavatar";
 import meRemoveAvatar from "./controllers/me/removeavatar";
 import meRemove from "./controllers/me/remove";
@@ -312,43 +311,6 @@ router.put('/me/setavatar', meSetAvatar); // Установить аватар
  *      }
  */
 router.delete('/me/removeavatar', meRemoveAvatar); // Удалить аватар
-
-/**
- * /---------------------------------------------------------------------------------------------------------------------/
- * @api {put} /api/users/me/setgame Установить игру текущего пользователя
- * @apiVersion 0.5.0
- * @apiName SetMyGame
- * @apiGroup Users-Me
- * @apiParam {Boolean}  ingame          Находится ли в игре
- * @apiParam {Object}   game            Информация об игре
- * @apiParam {String}   game.name       Название сборки
- * @apiParam {String}   game.version    Версия сборки
- * @apiParam {Number}   game.build      ID Версии (Если она расшарена)
- * @apiParam {Number}   game.gamecode   Код игры
- * @apiHeader {String} Authorization Bearer токен.
- * @apiSuccessExample {json} Success-Response:
- *     HTTP/1.1 200 OK
- *     {
- *         "id": 1,
- *         "username": "testuser",
- *         "avatar": "",
- *         "name": "Тестовый пользователь",
- *         "email": "test@test.ru",
- *         "ingame": false,
- *         "ingame_info": null
- *     }
- * @apiErrorExample {json} Error-Validation:
- *      HTTP/1.1 400 BAD REQUEST
- *      {
- *          "errors": "Не удалось установить игру"
- *      }
- * @apiErrorExample {json} Error-Auth:
- *      HTTP/1.1 403 AuthenticationFailed
- *      {
- *          "errors": "Ошибка авторизации"
- *      }
- */
-router.put('/me/setgame', meSetGame); // Установить игру
 
 /**
  * /---------------------------------------------------------------------------------------------------------------------/

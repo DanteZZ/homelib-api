@@ -6,6 +6,8 @@ import rCover from "./routes/covers"
 import rLanguage from "./routes/languages"
 import rPublisher from "./routes/publishers"
 import rFriend from "./routes/friends"
+import rReview from "./routes/reviews"
+import rHandover from "./routes/handovers"
 
 export default [
     {
@@ -39,5 +41,13 @@ export default [
     {
         path: "/friends",
         controller: rFriend,
+    },
+    {
+        path: "/reviews",
+        controller: rReview,
+    },
+    {
+        path: "/handovers",
+        controller: rHandover,
     }
 ]
