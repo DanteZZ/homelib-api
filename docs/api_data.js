@@ -150,6 +150,20 @@ define({ "api": [
             "optional": false,
             "field": "handovered",
             "description": "<p>Отдана ли кому-то</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": "<p>Прочитана ли книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ordered",
+            "description": "<p>Находится ли она в доставке</p>"
           }
         ]
       }
@@ -306,6 +320,20 @@ define({ "api": [
             "optional": false,
             "field": "handovered",
             "description": "<p>Отдана ли кому-то</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": "<p>Прочитана ли книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ordered",
+            "description": "<p>Находится ли она в доставке</p>"
           }
         ]
       }
@@ -449,6 +477,20 @@ define({ "api": [
             "optional": false,
             "field": "handovered",
             "description": "<p>Отдана ли кому-то</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": "<p>Прочитана ли книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ordered",
+            "description": "<p>Находится ли она в доставке</p>"
           }
         ]
       }
@@ -612,6 +654,20 @@ define({ "api": [
             "optional": false,
             "field": "handovered",
             "description": "<p>Отдана ли кому-то</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "readed",
+            "description": "<p>Прочитана ли книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ordered",
+            "description": "<p>Находится ли она в доставке</p>"
           }
         ]
       }

@@ -67,12 +67,15 @@ const BookModel = class {
     * @apiSuccess (200) {Number} category Категория
     * @apiSuccess (200) {Number} rate Рейтинг
     * @apiSuccess (200) {Boolean} handovered Отдана ли кому-то
+    * @apiSuccess (200) {Boolean} readed Прочитана ли книга
+    * @apiSuccess (200) {Boolean} ordered Находится ли она в доставке
     */
 
     constructor(data) {
         this.id = data.id;
         this.user = data.user;
         this.name = data.name;
+        this.author = data.author;
         this.publisher = data.publisher;
         this.year = data.year;
         this.isbn = data.isbn;
@@ -85,6 +88,8 @@ const BookModel = class {
         this.category = data.category;
         this.rate = data.rate;
         this.handovered = data.handovered;
+        this.readed = data.readed;
+        this.ordered = data.ordered;
     }
 
     remove = async () => {
@@ -98,6 +103,7 @@ const BookModel = class {
             id: this.id,
             name: this.name,
             publisher: this.publisher,
+            author: this.author,
             year: this.year,
             isbn: this.isbn,
             buy_date: this.buy_date,
@@ -108,7 +114,9 @@ const BookModel = class {
             cover: this.cover,
             category: this.category,
             rate: this.rate,
-            handovered: this.handovered
+            handovered: this.handovered,
+            readed: this.readed,
+            ordered: this.ordered
         }
     }
 
@@ -138,6 +146,7 @@ const BookModel = class {
             user: this.user,
             name: this.name,
             publisher: this.publisher,
+            author: this.author,
             year: this.year,
             isbn: this.isbn,
             buy_date: this.buy_date,
@@ -147,7 +156,9 @@ const BookModel = class {
             image: this.image,
             cover: this.cover,
             category: this.category,
-            rate: this.rate
+            rate: this.rate,
+            readed: this.readed,
+            ordered: this.ordered
         }
         const isInvalid = validate(data, constraints);
 

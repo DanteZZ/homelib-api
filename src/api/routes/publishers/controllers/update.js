@@ -6,7 +6,7 @@ export default async (req, res, next) => {
         const jwtInfo = await checkToken(req?.headers?.authorization.split(" ")?.[1]);
         const item = await getPublisher(req.params.id);
         for (var par in req.body) {
-            if (par == "image" && req.body[par]) {
+            if (par == "image" && (req.body[par] !== item.image)) {
                 await item.setImage(req.body[par]);
             } else {
                 item[par] = req.body[par];
