@@ -1,6 +1,7 @@
 import { errorMessages, common } from "../../configs";
 import validate from "validate.js";
 import { _selectFrom, _insertInto, _updateIn, _removeById } from "../common";
+import { removeImage, saveImage } from "../file";
 
 const errors = errorMessages().book;
 
@@ -68,6 +69,8 @@ const BookModel = class {
     * @apiSuccess (200) {Number} rate Рейтинг
     * @apiSuccess (200) {Boolean} handovered Отдана ли кому-то
     * @apiSuccess (200) {Boolean} readed Прочитана ли книга
+    * @apiSuccess (200) {String} serie Серия
+    * @apiSuccess (200) {String} read_date Дата прочтения
     * @apiSuccess (200) {Boolean} ordered Находится ли она в доставке
     */
 
@@ -89,6 +92,8 @@ const BookModel = class {
         this.rate = data.rate;
         this.handovered = data.handovered;
         this.readed = data.readed;
+        this.serie = data.serie;
+        this.read_date = data.read_date;
         this.ordered = data.ordered;
     }
 
@@ -116,16 +121,23 @@ const BookModel = class {
             rate: this.rate,
             handovered: this.handovered,
             readed: this.readed,
-            ordered: this.ordered
+            serie: this.serie,
+            read_date: this.read_date,
+            ordered: this.ordered,
+
         }
     }
 
     setImage = async (base64) => {
         try {
-            if (this.image) { await removeImage(this.image) };
-            const name = await saveImage(base64);
-            this.image = name;
-            return true;
+            if (base64) {
+                if (this.image) { await removeImage(this.image) };
+                const name = await saveImage(base64);
+                this.image = name;
+                return true;
+            } else {
+                await this.removeImage();
+            }
         } catch (e) {
             throw e;
         }
@@ -158,6 +170,8 @@ const BookModel = class {
             category: this.category,
             rate: this.rate,
             readed: this.readed,
+            serie: this.serie,
+            read_date: this.read_date,
             ordered: this.ordered
         }
         const isInvalid = validate(data, constraints);

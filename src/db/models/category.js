@@ -49,11 +49,13 @@ const CategoryModel = class {
     * @apiDefine CategoryResult
     * @apiSuccess (200) {Number} id ID
     * @apiSuccess (200) {String} name Название
+    * @apiSuccess (200) {Number} parent ID родительской категории
     */
 
     constructor(data) {
         this.id = data.id;
         this.name = data.name;
+        this.parent = data.parent;
     }
 
     remove = async () => {
@@ -64,13 +66,15 @@ const CategoryModel = class {
     info = () => {
         return {
             id: this.id,
-            name: this.name
+            name: this.name,
+            parent: this.parent
         }
     }
 
     update = async () => {
         const data = {
             name: this.name,
+            parent: this.parent,
         }
         const isInvalid = validate(data, constraints);
 

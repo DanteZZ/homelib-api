@@ -9,6 +9,8 @@ import rFriend from "./routes/friends"
 import rReview from "./routes/reviews"
 import rHandover from "./routes/handovers"
 
+import rExternal from "./routes/external"
+
 export default [
     {
         path: "/users",
@@ -49,5 +51,9 @@ export default [
     {
         path: "/handovers",
         controller: rHandover,
+    },
+    {
+        path: "/external",
+        controller: rExternal,
     }
 ]

@@ -6,8 +6,10 @@ export default async (req, res, next) => {
         const jwtInfo = await checkToken(req?.headers?.authorization.split(" ")?.[1]);
         const item = await getBook(jwtInfo.id, req.params.id);
         for (var par in req.body) {
-            if (par == "image" && (req.body[par] !== item.image)) {
-                await item.setImage(req.body[par]);
+            if (par == "image") {
+                if ((req.body[par] !== item.info().image)) {
+                    await item.setImage(req.body[par]);
+                };
             } else {
                 item[par] = req.body[par];
             }
@@ -15,6 +17,7 @@ export default async (req, res, next) => {
         await item.update();
         res.status(200).json(item.info());
     } catch (e) {
+        console.log(e);
         res.status(400).json({ errors: e })
     }
 }

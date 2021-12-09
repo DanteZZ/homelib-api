@@ -75,10 +75,14 @@ const PublisherModel = class {
 
     setImage = async (base64) => {
         try {
-            if (this.image) { await removeImage(this.image) };
-            const name = await saveImage(base64);
-            this.image = name;
-            return true;
+            if (base64) {
+                if (this.image) { await removeImage(this.image) };
+                const name = await saveImage(base64);
+                this.image = name;
+                return true;
+            } else {
+                await this.removeImage();
+            }
         } catch (e) {
             throw e;
         }

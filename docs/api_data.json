@@ -160,6 +160,20 @@
           },
           {
             "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "serie",
+            "description": "<p>Серия</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "read_date",
+            "description": "<p>Дата прочтения</p>"
+          },
+          {
+            "group": "200",
             "type": "Boolean",
             "optional": false,
             "field": "ordered",
@@ -330,6 +344,20 @@
           },
           {
             "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "serie",
+            "description": "<p>Серия</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "read_date",
+            "description": "<p>Дата прочтения</p>"
+          },
+          {
+            "group": "200",
             "type": "Boolean",
             "optional": false,
             "field": "ordered",
@@ -484,6 +512,20 @@
             "optional": false,
             "field": "readed",
             "description": "<p>Прочитана ли книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "serie",
+            "description": "<p>Серия</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "read_date",
+            "description": "<p>Дата прочтения</p>"
           },
           {
             "group": "200",
@@ -664,6 +706,20 @@
           },
           {
             "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "serie",
+            "description": "<p>Серия</p>"
+          },
+          {
+            "group": "200",
+            "type": "String",
+            "optional": false,
+            "field": "read_date",
+            "description": "<p>Дата прочтения</p>"
+          },
+          {
+            "group": "200",
             "type": "Boolean",
             "optional": false,
             "field": "ordered",
@@ -733,6 +789,13 @@
             "optional": false,
             "field": "name",
             "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>ID родительской категории</p>"
           }
         ]
       }
@@ -798,6 +861,13 @@
             "optional": false,
             "field": "name",
             "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>ID родительской категории</p>"
           }
         ]
       }
@@ -850,6 +920,13 @@
             "optional": false,
             "field": "name",
             "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>ID родительской категории</p>"
           }
         ]
       }
@@ -922,6 +999,13 @@
             "optional": false,
             "field": "name",
             "description": "<p>Название</p>"
+          },
+          {
+            "group": "200",
+            "type": "Number",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>ID родительской категории</p>"
           }
         ]
       }
@@ -1180,6 +1264,103 @@
         ]
       }
     }
+  },
+  {
+    "type": "post",
+    "url": "/api/externals/get/",
+    "title": "Получить книгу",
+    "version": "1.0.0",
+    "name": "ExternalGet",
+    "group": "Externals",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "url",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/external/index.js",
+    "groupTitle": "Externals"
+  },
+  {
+    "type": "post",
+    "url": "/api/external/search/",
+    "title": "Поиск книг",
+    "version": "1.0.0",
+    "name": "GetExternalFind",
+    "group": "Externals",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer токен.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "query",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Auth:",
+          "content": "HTTP/1.1 403 AuthenticationFailed\n{\n    \"errors\": \"Ошибка авторизации\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/api/routes/external/index.js",
+    "groupTitle": "Externals"
   },
   {
     "type": "post",
