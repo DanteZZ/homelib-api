@@ -37,8 +37,7 @@ const createCover = async (data) => {
         throw isInvalid
     } else {
         const add = await _insertInto("covers", data);
-        const cover = await _selectFrom("covers", { id: add.insertId });
-        return cover[0];
+        return await getCover(add.insertId);
     }
 }
 

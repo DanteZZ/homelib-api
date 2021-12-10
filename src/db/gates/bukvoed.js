@@ -13,8 +13,8 @@ export default {
             }
         })
         return data.map(i => new ExternalModel({
-            image_min: i.PictureUrl || null,
-            image: i.PictureUrl || null,
+            image_min: ("http://homelib.gal1.ru/api/external/getimage/?url=" + encodeURIComponent(i.PictureUrl)) || null,
+            image: ("http://homelib.gal1.ru/api/external/getimage/?url=" + encodeURIComponent(i.PictureUrl)) || null,
             name: i.Name,
             author: i?.Params?.['Автор'] || null,
             price: i.Price || null

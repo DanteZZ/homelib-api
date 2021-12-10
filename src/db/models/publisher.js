@@ -37,9 +37,9 @@ const createPublisher = async (data) => {
     if (isInvalid) {
         throw isInvalid
     } else {
+        data.image = data.image ? await saveImage(data.image) : null;
         const add = await _insertInto("publishers", data);
-        const publisher = await _selectFrom("publishers", { id: add.insertId });
-        return publisher[0];
+        return await getPublisher(add.insertId);
     }
 }
 

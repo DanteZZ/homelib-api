@@ -1266,9 +1266,9 @@ define({ "api": [
     }
   },
   {
-    "type": "post",
-    "url": "/api/externals/get/",
-    "title": "Получить книгу",
+    "type": "get",
+    "url": "/api/external/getimage/",
+    "title": "Получить изображение",
     "version": "1.0.0",
     "name": "ExternalGet",
     "group": "Externals",
@@ -1280,13 +1280,6 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "url",
-            "description": ""
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "type",
             "description": ""
           }
         ]

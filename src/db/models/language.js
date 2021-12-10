@@ -37,8 +37,7 @@ const createLanguage = async (data) => {
         throw isInvalid
     } else {
         const add = await _insertInto("languages", data);
-        const language = await _selectFrom("languages", { id: add.insertId });
-        return language[0];
+        return await getLanguage(add.insertId);
     }
 }
 

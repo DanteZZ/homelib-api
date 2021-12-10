@@ -42,9 +42,9 @@ const createBook = async (from, data) => {
         throw isInvalid
     } else {
         data.user = from
+        data.image = data.image ? await saveImage(data.image) : null;
         const add = await _insertInto("books", data);
-        const book = await _selectFrom("books", { id: add.insertId });
-        return book[0];
+        return await getBook(from,add.insertId);
     }
 }
 

@@ -40,8 +40,7 @@ const createHandover = async (user,data) => {
     } else {
         data.user = user;
         const add = await _insertInto("handovers", data);
-        const handover = await _selectFrom("handovers", { id: add.insertId });
-        return handover[0];
+        return await getHandover(add.insertId);
     }
 }
 

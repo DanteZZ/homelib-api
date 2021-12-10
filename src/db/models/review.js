@@ -39,8 +39,7 @@ const createReview = async (user,data) => {
     } else {
         data.user = user;
         const add = await _insertInto("reviews", data);
-        const review = await _selectFrom("reviews", { id: add.insertId });
-        return review[0];
+        return await getReview(add.insertId);
     }
 }
 

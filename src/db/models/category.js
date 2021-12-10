@@ -37,8 +37,7 @@ const createCategory = async (data) => {
         throw isInvalid
     } else {
         const add = await _insertInto("categories", data);
-        const category = await _selectFrom("categories", { id: add.insertId });
-        return category[0];
+        return await getCategory(add.insertId);
     }
 }
 

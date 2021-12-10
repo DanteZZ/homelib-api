@@ -22,12 +22,11 @@ router.post('/search', ExternalFind);
 
 /**
  * /---------------------------------------------------------------------------------------------------------------------/
- * @api {post} /api/externals/get/ Получить книгу
+ * @api {get} /api/external/getimage/ Получить изображение
  * @apiVersion 1.0.0
  * @apiName ExternalGet
  * @apiGroup Externals
  * @apiParam {String} url
- * @apiParam {String} type
  * @apiHeader {String} Authorization Bearer токен.
  * @apiErrorExample {json} Error-Auth:
  *      HTTP/1.1 403 AuthenticationFailed
@@ -35,6 +34,6 @@ router.post('/search', ExternalFind);
  *          "errors": "Ошибка авторизации"
  *      }
  */
-router.post('/get', ExternalGet); // Создать переплёт
+router.get('/getimage', ExternalGet);
 
 export default router;

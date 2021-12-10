@@ -38,8 +38,7 @@ const createFriend = async (user,data) => {
     } else {
         data.user = user;
         const add = await _insertInto("friends", data);
-        const friend = await _selectFrom("friends", { id: add.insertId });
-        return friend[0];
+        return await getFriend(add.insertId);
     }
 }
 

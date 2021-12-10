@@ -8,7 +8,7 @@ export default {
         const { data: { result } } = await axios.get("https://www.litres.ru/pages/search_slice", {
             params: {
                 q: query,
-                limit: 50,
+                limit: 100,
                 gu_ajax: true
             }
         })
