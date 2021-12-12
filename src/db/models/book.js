@@ -43,6 +43,8 @@ const createBook = async (from, data) => {
     } else {
         data.user = from
         data.image = data.image ? await saveImage(data.image) : null;
+        data.read_dates = JSON.stringify(data.read_dates);
+        data.reading = JSON.stringify(data.reading);
         const add = await _insertInto("books", data);
         return await getBook(from,add.insertId);
     }
@@ -68,9 +70,10 @@ const BookModel = class {
     * @apiSuccess (200) {Number} category Категория
     * @apiSuccess (200) {Number} rate Рейтинг
     * @apiSuccess (200) {Boolean} handovered Отдана ли кому-то
-    * @apiSuccess (200) {Boolean} readed Прочитана ли книга
     * @apiSuccess (200) {String} serie Серия
-    * @apiSuccess (200) {String} read_date Дата прочтения
+    * @apiSuccess (200) {Array} read_dates Даты прочтения
+    * @apiSuccess (200) {Object} reading читается ли сейчас книга
+    * @apiSuccess (200) {Boolean} unhauled На паузе ли книга
     * @apiSuccess (200) {Boolean} ordered Находится ли она в доставке
     */
 
@@ -91,9 +94,10 @@ const BookModel = class {
         this.category = data.category;
         this.rate = data.rate;
         this.handovered = data.handovered;
-        this.readed = data.readed;
         this.serie = data.serie;
-        this.read_date = data.read_date;
+        this.read_dates = JSON.parse(data.read_dates);
+        this.reading = JSON.parse(data.reading);
+        this.unhauled = data.unhauled;
         this.ordered = data.ordered;
     }
 
@@ -120,9 +124,10 @@ const BookModel = class {
             category: this.category,
             rate: this.rate,
             handovered: this.handovered,
-            readed: this.readed,
             serie: this.serie,
-            read_date: this.read_date,
+            unhauled: this.unhauled,
+            reading: this.reading,
+            read_dates: this.read_dates,
             ordered: this.ordered,
 
         }
@@ -169,9 +174,10 @@ const BookModel = class {
             cover: this.cover,
             category: this.category,
             rate: this.rate,
-            readed: this.readed,
+            reading: JSON.stringify(this.reading),
             serie: this.serie,
-            read_date: this.read_date,
+            read_dates: JSON.stringify(this.read_dates),
+            unhauled: this.unhauled,
             ordered: this.ordered
         }
         const isInvalid = validate(data, constraints);

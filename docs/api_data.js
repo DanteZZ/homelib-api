@@ -153,13 +153,6 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "readed",
-            "description": "<p>Прочитана ли книга</p>"
-          },
-          {
-            "group": "200",
             "type": "String",
             "optional": false,
             "field": "serie",
@@ -167,10 +160,24 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "String",
+            "type": "Array",
             "optional": false,
-            "field": "read_date",
-            "description": "<p>Дата прочтения</p>"
+            "field": "read_dates",
+            "description": "<p>Даты прочтения</p>"
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "reading",
+            "description": "<p>читается ли сейчас книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "unhauled",
+            "description": "<p>На паузе ли книга</p>"
           },
           {
             "group": "200",
@@ -337,13 +344,6 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "readed",
-            "description": "<p>Прочитана ли книга</p>"
-          },
-          {
-            "group": "200",
             "type": "String",
             "optional": false,
             "field": "serie",
@@ -351,10 +351,24 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "String",
+            "type": "Array",
             "optional": false,
-            "field": "read_date",
-            "description": "<p>Дата прочтения</p>"
+            "field": "read_dates",
+            "description": "<p>Даты прочтения</p>"
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "reading",
+            "description": "<p>читается ли сейчас книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "unhauled",
+            "description": "<p>На паузе ли книга</p>"
           },
           {
             "group": "200",
@@ -508,13 +522,6 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "readed",
-            "description": "<p>Прочитана ли книга</p>"
-          },
-          {
-            "group": "200",
             "type": "String",
             "optional": false,
             "field": "serie",
@@ -522,10 +529,24 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "String",
+            "type": "Array",
             "optional": false,
-            "field": "read_date",
-            "description": "<p>Дата прочтения</p>"
+            "field": "read_dates",
+            "description": "<p>Даты прочтения</p>"
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "reading",
+            "description": "<p>читается ли сейчас книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "unhauled",
+            "description": "<p>На паузе ли книга</p>"
           },
           {
             "group": "200",
@@ -699,13 +720,6 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "Boolean",
-            "optional": false,
-            "field": "readed",
-            "description": "<p>Прочитана ли книга</p>"
-          },
-          {
-            "group": "200",
             "type": "String",
             "optional": false,
             "field": "serie",
@@ -713,10 +727,24 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "String",
+            "type": "Array",
             "optional": false,
-            "field": "read_date",
-            "description": "<p>Дата прочтения</p>"
+            "field": "read_dates",
+            "description": "<p>Даты прочтения</p>"
+          },
+          {
+            "group": "200",
+            "type": "Object",
+            "optional": false,
+            "field": "reading",
+            "description": "<p>читается ли сейчас книга</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "unhauled",
+            "description": "<p>На паузе ли книга</p>"
           },
           {
             "group": "200",
